@@ -1,0 +1,49 @@
+# Project: TINY
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = ANALYZE.o CGEN.o CODE.o MAIN.o PARSE.o SCAN.o SYMTAB.o UTIL.o
+LINKOBJ  = ANALYZE.o CGEN.o CODE.o MAIN.o PARSE.o SCAN.o SYMTAB.o UTIL.o
+LIBS     = -L"D:/Dev-Cpp/MinGW64/lib" -L"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib"
+INCS     = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = CIFA.exe
+CXXFLAGS = $(CXXINCS) -std=c++98
+CFLAGS   = $(INCS) -std=c++98
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+ANALYZE.o: ANALYZE.C
+	$(CPP) -c ANALYZE.C -o ANALYZE.o $(CXXFLAGS)
+
+CGEN.o: CGEN.C
+	$(CPP) -c CGEN.C -o CGEN.o $(CXXFLAGS)
+
+CODE.o: CODE.C
+	$(CPP) -c CODE.C -o CODE.o $(CXXFLAGS)
+
+MAIN.o: MAIN.C
+	$(CPP) -c MAIN.C -o MAIN.o $(CXXFLAGS)
+
+PARSE.o: PARSE.C
+	$(CPP) -c PARSE.C -o PARSE.o $(CXXFLAGS)
+
+SCAN.o: SCAN.C
+	$(CPP) -c SCAN.C -o SCAN.o $(CXXFLAGS)
+
+SYMTAB.o: SYMTAB.C
+	$(CPP) -c SYMTAB.C -o SYMTAB.o $(CXXFLAGS)
+
+UTIL.o: UTIL.C
+	$(CPP) -c UTIL.C -o UTIL.o $(CXXFLAGS)
